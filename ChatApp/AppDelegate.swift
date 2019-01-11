@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import ApiAI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        window = UIWindow()
+        window?.makeKeyAndVisible()
+       window?.rootViewController = UINavigationController(rootViewController: ViewController())
+        
+        let configuration = AIDefaultConfiguration()
+        configuration.clientAccessToken = "05d9c520e9df4e67a8eda38fc5b06206"
+        
+        let apiai = ApiAI.shared()
+        apiai?.configuration = configuration
+        
         return true
     }
 
@@ -43,6 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Saves changes in the application's managed object context before the application terminates.
         self.saveContext()
     }
+    
 
     // MARK: - Core Data stack
 
